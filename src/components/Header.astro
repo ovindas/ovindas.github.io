@@ -1,0 +1,263 @@
+---
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<header id="main-header">
+  <a href={`${baseUrl}#`} class="logo">
+    <span>&lt;</span>JVindas<span>/&gt;</span>
+  </a>
+
+  <!-- Enlaces de navegación de escritorio -->
+  <nav class="nav-container">
+    <div class="nav-links" id="nav-links">
+      <a href={`${baseUrl}#`} class="nav-link">Inicio</a>
+      <a href={`${baseUrl}#servicios`} class="nav-link">Servicios</a>
+      <a href={`${baseUrl}#proyectos`} class="nav-link">Proyectos</a>
+      <a href={`${baseUrl}#habilidades`} class="nav-link">Habilidades</a>
+      <a href={`${baseUrl}#contacto`} class="nav-link">Contacto</a>
+      <md-outlined-button class="header-btn" href={`${baseUrl}#contacto`}>
+        Contratar
+      </md-outlined-button>
+    </div>
+
+    <!-- Botón de Menú Móvil -->
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <span class="material-symbols-outlined icon-menu">menu</span>
+      <span class="material-symbols-outlined icon-close" style="display: none;">
+        close
+      </span>
+    </button>
+  </nav>
+</header>
+
+<!-- Menú móvil desplegable -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href={`${baseUrl}#`} class="mobile-link">Inicio</a>
+  <a href={`${baseUrl}#servicios`} class="mobile-link">Servicios</a>
+  <a href={`${baseUrl}#proyectos`} class="mobile-link">Proyectos</a>
+  <a href={`${baseUrl}#contacto`} class="mobile-link">Contacto</a>
+  <md-outlined-button class="header-btn" href={`${baseUrl}#contacto`}>
+    Contratar
+  </md-outlined-button>
+</div>
+
+<script>
+  import "@material/web/button/outlined-button.js";
+  import "@material/web/button/filled-button.js";
+
+  // Lógica del header adhesivo (sticky) y menú móvil
+  const header = document.getElementById("main-header");
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
+  const iconMenu = document.querySelector(".icon-menu") as HTMLElement;
+  const iconClose = document.querySelector(".icon-close") as HTMLElement;
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  // Sticky header al hacer scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header?.classList.add("scrolled");
+    } else {
+      header?.classList.remove("scrolled");
+    }
+  });
+
+  // Alternar el menú móvil
+  function toggleMenu() {
+    const isOpen = mobileNav?.classList.toggle("open");
+    if (isOpen) {
+      if (iconMenu) iconMenu.style.display = "none";
+      if (iconClose) iconClose.style.display = "inline-block";
+      document.body.style.overflow = "hidden"; // Evita scroll de fondo
+    } else {
+      if (iconMenu) iconMenu.style.display = "inline-block";
+      if (iconClose) iconClose.style.display = "none";
+      document.body.style.overflow = "";
+    }
+  }
+
+  menuToggle?.addEventListener("click", toggleMenu);
+
+  // Cerrar menú móvil al hacer clic en un enlace
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileNav?.classList.remove("open");
+      if (iconMenu) iconMenu.style.display = "inline-block";
+      if (iconClose) iconClose.style.display = "none";
+      document.body.style.overflow = "";
+    });
+  });
+</script>
+
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.8rem 2rem;
+    transition: var(--transition-swift);
+    box-sizing: border-box;
+  }
+
+  header.scrolled {
+    background-color: rgba(15, 13, 19, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 1.2rem 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Logotipo */
+  .logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--md-sys-color-on-background);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    transition: var(--transition-swift);
+  }
+
+  .logo span {
+    color: var(--md-sys-color-primary);
+    transition: var(--transition-swift);
+  }
+
+  .logo:hover {
+    transform: scale(1.03);
+  }
+
+  .logo:hover span {
+    filter: drop-shadow(0 0 8px var(--md-sys-color-primary));
+  }
+
+  /* Contenedor de Navegación */
+  .nav-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-family: var(--font-outfit);
+    font-weight: 500;
+    color: var(--md-sys-color-on-background);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition-swift);
+    opacity: 0.85;
+    position: relative;
+    padding: 0.2rem 0;
+  }
+
+  /* Efecto underline en hover */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--md-sys-color-primary);
+    transition: var(--transition-swift);
+  }
+
+  .nav-link:hover {
+    opacity: 1;
+    color: var(--md-sys-color-primary);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Botón de Menú Móvil */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--md-sys-color-on-background);
+    cursor: pointer;
+    padding: 0.5rem;
+    outline: none;
+  }
+
+  /* Estilos del menú móvil desplegable */
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 13, 19, 0.98);
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-nav.open {
+    transform: translateY(0);
+  }
+
+  .mobile-link {
+    font-family: var(--font-outfit);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--md-sys-color-on-background);
+    text-decoration: none;
+    transition: var(--transition-swift);
+  }
+
+  .mobile-link:hover {
+    color: var(--md-sys-color-primary);
+    transform: scale(1.05);
+  }
+
+  .header-btn {
+    --md-filled-button-label-text-font: var(--font-outfit);
+    --md-outlined-button-label-text-font: var(--font-outfit);
+    --md-filled-button-label-text-weight: 500;
+    --md-outlined-button-label-text-weight: 500;
+    font-family: var(--font-outfit);
+  }
+
+  /* Responsivo */
+  @media (max-width: 768px) {
+    header {
+      padding: 1.2rem 1.5rem;
+    }
+
+    header.scrolled {
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
+      z-index: 101;
+    }
+  }
+</style>

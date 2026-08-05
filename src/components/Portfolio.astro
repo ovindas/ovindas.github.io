@@ -1,0 +1,279 @@
+---
+const projects = [
+  {
+    title: "Alfaco CMS",
+    description:
+      "Como ingeniero de software, lideré el rediseño y desarrollo integral del sitio web corporativo. Como resultado, se logró una mejora significativa en la experiencia del usuario, un diseño moderno e interactivo, y una mejor presentación de los servicios de la empresa.",
+    tech: ["PHP", "MySQL", "HTML/CSS/JS"],
+    github: "#",
+    demo: "https://alfa.cr/",
+  },
+  {
+    title: "Plataforma Web Netscouters",
+    description:
+      "Como desarrollador full-stack, participé en el desarrollo de una plataforma web para administración y gestión de jugadores de fútbol amateur. Como resultado, se logró centralizar la promoción y gestión de jugadores, equipos y ligas de fútbol amateur.",
+    tech: ["Python", "PostgreSQL", "HTML/CSS/JS"],
+    github: "#",
+    demo: "https://develop.netscouters.com/",
+  },
+];
+---
+
+<section id="proyectos" class="portfolio-section reveal">
+  <div class="section-header">
+    <span class="section-tag">Mi Trabajo</span>
+    <h2 class="section-title">Proyectos Destacados</h2>
+    <p class="section-subtitle">
+      Una selección de soluciones reales diseñadas con enfoque en escalabilidad,
+      velocidad y diseño.
+    </p>
+  </div>
+
+  <div class="projects-grid">
+    {
+      projects.map((project) => (
+        <div class="project-card">
+          <div class="project-image-placeholder">
+            <div class="project-gradient-overlay" />
+            <a href={project.demo} target="_blank" class="project-art-icon">
+              <md-icon>terminal</md-icon>
+            </a>
+          </div>
+
+          <div class="project-content">
+            <h3 class="project-title">{project.title}</h3>
+            <p class="project-description">{project.description}</p>
+
+            <div class="project-tech-tags">
+              {project.tech.map((tech) => (
+                <span class="tech-tag">{tech}</span>
+              ))}
+            </div>
+
+            <div class="project-actions">
+              <a
+                href={project.github}
+                target="_blank"
+                aria-label="Ver Código en GitHub"
+                class="action-link"
+              >
+                <md-icon-button>
+                  <md-icon>code</md-icon>
+                </md-icon-button>
+              </a>
+              <a
+                href={project.demo}
+                target="_blank"
+                aria-label="Ver Demo en Vivo"
+                class="action-link"
+              >
+                <md-icon-button>
+                  <md-icon>open_in_new</md-icon>
+                </md-icon-button>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import "@material/web/iconbutton/icon-button.js";
+  import "@material/web/icon/icon.js";
+</script>
+
+<style>
+  .portfolio-section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* Cabecera de Sección */
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    color: var(--md-sys-color-primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: var(--font-outfit);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--md-sys-color-on-background);
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .section-subtitle {
+    color: var(--md-sys-color-on-background);
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+
+  /* Grid de Proyectos */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  /* Tarjeta de Proyecto */
+  .project-card {
+    background: rgba(24, 21, 31, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: var(--transition-swift);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(208, 188, 255, 0.15);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Contenedor Visual (en lugar de placeholders vacíos) */
+  .project-image-placeholder {
+    position: relative;
+    height: 180px;
+    background: linear-gradient(
+      135deg,
+      rgba(79, 55, 139, 0.3) 0%,
+      rgba(24, 21, 31, 0.8) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .project-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 80% 20%,
+      rgba(208, 188, 255, 0.1) 0%,
+      transparent 60%
+    );
+  }
+
+  .project-art-icon {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--md-sys-color-primary);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-swift);
+  }
+
+  .project-card:hover .project-art-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--md-sys-color-tertiary);
+    border-color: rgba(239, 184, 200, 0.2);
+    box-shadow: 0 8px 32px rgba(208, 188, 255, 0.15);
+  }
+
+  .project-art-icon md-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Contenido */
+  .project-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .project-title {
+    font-family: var(--font-outfit);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--md-sys-color-on-surface);
+    margin-bottom: 0.8rem;
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+    color: var(--md-sys-color-on-surface-variant);
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+    flex-grow: 1;
+  }
+
+  /* Tags de tecnologías */
+  .project-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .tech-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: rgba(208, 188, 255, 0.05);
+    border: 1px solid rgba(208, 188, 255, 0.1);
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+    color: var(--md-sys-color-primary);
+  }
+
+  /* Botones de acción */
+  .project-actions {
+    display: flex;
+    gap: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1.2rem;
+    margin-top: auto;
+  }
+
+  .action-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Adaptación Móvil */
+  @media (max-width: 768px) {
+    .portfolio-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+  }
+</style>

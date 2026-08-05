@@ -1,0 +1,288 @@
+---
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section class="hero-section">
+  <div class="hero-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="badge">
+      <span class="pulse"></span>
+      Disponible para nuevos proyectos
+    </div>
+
+    <h1 class="hero-title">
+      Diseño & Desarrollo de <br />
+      <span class="gradient-text">Software de Alto Impacto</span>
+    </h1>
+
+    <p class="hero-description">
+      Ayudo a empresas a convertir sus necesidades en software confiable y
+      escalable, mediante desarrollo web, integraciones y automatización de
+      procesos.
+    </p>
+
+    <div class="hero-actions">
+      <md-filled-button
+        class="hero-btn"
+        href={`${baseUrl}#contacto`}
+        style="width: 100%"
+      >
+        <md-icon slot="icon">mail</md-icon>
+        Trabajemos juntos
+      </md-filled-button>
+      <md-outlined-button
+        class="hero-btn"
+        href={`${baseUrl}#proyectos`}
+        style="width: 100%"
+      >
+        <md-icon slot="icon">database</md-icon>
+        Ver proyectos
+      </md-outlined-button>
+    </div>
+
+    <!-- Tech Stack Mini Showcase -->
+    <div class="tech-showcase">
+      <span class="tech-tag"><md-icon>code</md-icon> .Net/Django</span>
+      <span class="tech-tag">
+        <md-icon>terminal</md-icon> JavaScript/TypeScript
+      </span>
+      <span class="tech-tag"><md-icon>dns</md-icon> PHP/C#/Python</span>
+      <span class="tech-tag">
+        <md-icon>database</md-icon> Postgres/SQLServer
+      </span>
+      <span class="tech-tag"><md-icon>cloud</md-icon> Linux</span>
+      <span class="tech-tag"><md-icon>account_tree</md-icon> N8N</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  import "@material/web/button/filled-button.js";
+  import "@material/web/button/outlined-button.js";
+  import "@material/web/icon/icon.js";
+</script>
+
+<style>
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 2rem 4rem 2rem;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Fondo Dinámico */
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: floatBlob 20s infinite alternate;
+  }
+
+  .blob-1 {
+    background: var(--md-sys-color-primary);
+    top: -10%;
+    left: -10%;
+  }
+
+  .blob-2 {
+    background: var(--md-sys-color-tertiary);
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -5s;
+  }
+
+  @keyframes floatBlob {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+      transform: translate(100px, 50px) scale(1.2);
+    }
+  }
+
+  /* Contenido del Hero */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Badge de disponibilidad */
+  .badge {
+    background-color: var(--md-sys-color-surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    padding: 0.5rem 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--md-sys-color-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .pulse {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4caf50;
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    animation: pulse 1.8s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+
+    70% {
+      box-shadow: 0 0 0 8px rgba(76, 175, 80, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+  }
+
+  /* Título */
+  .hero-title {
+    font-family: var(--font-outfit);
+    font-size: 3.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    color: var(--md-sys-color-on-background);
+    margin-bottom: 1.5rem;
+  }
+
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      var(--md-sys-color-primary) 0%,
+      #a88be6 50%,
+      var(--md-sys-color-tertiary) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 10px rgba(208, 188, 255, 0.15));
+  }
+
+  /* Descripción */
+  .hero-description {
+    font-size: 1.2rem;
+    color: var(--md-sys-color-on-background);
+    opacity: 0.8;
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  /* Botones de acción */
+  .hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .hero-btn {
+    --md-filled-button-container-shape: 100px;
+    --md-outlined-button-container-shape: 100px;
+    --md-filled-button-label-text-font: var(--font-outfit);
+    --md-outlined-button-label-text-font: var(--font-outfit);
+    --md-filled-button-label-text-weight: 600;
+    --md-outlined-button-label-text-weight: 600;
+    --md-filled-button-container-height: 48px;
+    --md-outlined-button-container-height: 48px;
+    font-family: var(--font-outfit);
+    font-weight: 600;
+  }
+
+  /* Tech tags */
+  .tech-showcase {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 0.65;
+  }
+
+  .tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--md-sys-color-on-surface);
+  }
+
+  .tech-tag md-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Adaptación Móvil */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 7rem 1.5rem 3rem 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    .hero-btn {
+      width: 100%;
+    }
+
+    .blob {
+      width: 300px;
+      height: 300px;
+    }
+  }
+</style>

@@ -1,0 +1,374 @@
+---
+
+---
+
+<section id="contacto" class="contact-section reveal">
+  <div class="contact-container">
+    <div class="contact-info">
+      <span class="section-tag">Contacto</span>
+      <h2 class="contact-title">¿Tienes un proyecto en mente?</h2>
+      <p class="contact-desc">
+        Hablemos. Cuéntame sobre tus necesidades tecnológicas, plazos y
+        objetivos. Responderé en menos de 24 horas hábiles.
+      </p>
+
+      <div class="info-items">
+        <div class="info-item">
+          <div class="info-icon">
+            <md-icon>mail</md-icon>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:vindasdevsoft@gmail.com">vindasdevsoft@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <md-icon>location_on</md-icon>
+          </div>
+          <div>
+            <h4>Ubicación</h4>
+            <p>San José, Costa Rica (GMT-6) / Remoto</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrapper">
+      <form id="contact-form" class="contact-form" novalidate>
+        <md-outlined-text-field
+          label="Nombre Completo"
+          required
+          name="name"
+          id="form-name"
+          error-text="Por favor, ingresa tu nombre"
+        >
+          <md-icon slot="leading-icon">person</md-icon>
+        </md-outlined-text-field>
+
+        <md-outlined-text-field
+          label="Correo Electrónico"
+          type="email"
+          required
+          name="email"
+          id="form-email"
+          error-text="Por favor, ingresa un correo electrónico válido"
+        >
+          <md-icon slot="leading-icon">mail</md-icon>
+        </md-outlined-text-field>
+
+        <md-outlined-text-field
+          label="Cuéntame sobre tu proyecto"
+          type="textarea"
+          rows="5"
+          required
+          name="message"
+          id="form-message"
+          error-text="Por favor, escribe un breve mensaje"
+        >
+          <md-icon slot="leading-icon">chat</md-icon>
+        </md-outlined-text-field>
+
+        <div class="form-actions">
+          <md-filled-button
+            type="submit"
+            id="submit-button"
+            style="width: 100%;"
+          >
+            <md-icon slot="icon">send</md-icon>
+            Enviar Mensaje
+          </md-filled-button>
+        </div>
+
+        <div id="form-success" class="feedback-msg success-msg">
+          <md-icon>check_circle</md-icon>
+          <span
+            >¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.</span
+          >
+        </div>
+
+        <div id="form-error" class="feedback-msg error-msg">
+          <md-icon>error</md-icon>
+          <span
+            >Ocurrió un error. Por favor verifica los campos e intenta de nuevo.</span
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  import "@material/web/textfield/outlined-text-field.js";
+  import "@material/web/button/filled-button.js";
+  import "@material/web/icon/icon.js";
+  import type { MdOutlinedTextField } from "@material/web/textfield/outlined-text-field.js";
+
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const nameInput = document.getElementById("form-name") as MdOutlinedTextField;
+  const emailInput = document.getElementById(
+    "form-email",
+  ) as MdOutlinedTextField;
+  const messageInput = document.getElementById(
+    "form-message",
+  ) as MdOutlinedTextField;
+  const successMsg = document.getElementById("form-success") as HTMLElement;
+  const errorMsg = document.getElementById("form-error") as HTMLElement;
+  const submitBtn = document.getElementById("submit-button") as HTMLElement;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Ocultar mensajes previos
+    if (successMsg) successMsg.classList.remove("show");
+    if (errorMsg) errorMsg.classList.remove("show");
+
+    // Validar campos nativos de Material Web
+    let isValid = true;
+
+    [nameInput, emailInput, messageInput].forEach((input) => {
+      if (input) {
+        // Forzar validación visual
+        input.reportValidity();
+        if (!input.checkValidity()) {
+          isValid = false;
+        }
+      }
+    });
+
+    if (!isValid) {
+      if (errorMsg) errorMsg.classList.add("show");
+      return;
+    }
+
+    // Animación de carga en botón
+    if (submitBtn) {
+      submitBtn.setAttribute("disabled", "true");
+      const label = submitBtn.textContent;
+      submitBtn.innerHTML = '<md-icon slot="icon">sync</md-icon> Enviando...';
+    }
+
+    // Simular petición asíncrona de envío (ej. Formspree o API propia)
+    setTimeout(() => {
+      if (submitBtn) {
+        submitBtn.removeAttribute("disabled");
+        submitBtn.innerHTML =
+          '<md-icon slot="icon">send</md-icon> Enviar Mensaje';
+      }
+
+      // Mostrar éxito
+      if (successMsg) successMsg.classList.add("show");
+      form.reset();
+    }, 1500);
+  });
+</script>
+
+<style>
+  .contact-section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    background: rgba(24, 21, 31, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 4rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Info Column */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    color: var(--md-sys-color-primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-title {
+    font-family: var(--font-outfit);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--md-sys-color-on-background);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  .contact-desc {
+    font-size: 1.05rem;
+    color: var(--md-sys-color-on-surface-variant);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+  }
+
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .info-icon {
+    background-color: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-primary);
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .info-item h4 {
+    font-size: 0.9rem;
+    color: var(--md-sys-color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  .info-item a,
+  .info-item p {
+    font-size: 1.05rem;
+    color: var(--md-sys-color-on-background);
+    text-decoration: none;
+    transition: var(--transition-swift);
+  }
+
+  .info-item a:hover {
+    color: var(--md-sys-color-primary);
+  }
+
+  /* Form Column */
+  .contact-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Estilos específicos para Material Web Text Field */
+  md-outlined-text-field {
+    width: 100%;
+    margin-bottom: 1.8rem;
+    --md-outlined-text-field-container-shape: 12px;
+    --md-outlined-text-field-outline-color: rgba(255, 255, 255, 0.15);
+    --md-outlined-text-field-hover-outline-color: var(--md-sys-color-primary);
+    --md-outlined-text-field-focus-outline-color: var(--md-sys-color-primary);
+    --md-outlined-text-field-label-text-color: var(
+      --md-sys-color-on-surface-variant
+    );
+    --md-outlined-text-field-focus-label-text-color: var(
+      --md-sys-color-primary
+    );
+    --md-outlined-text-field-input-text-color: var(--md-sys-color-on-surface);
+    --md-outlined-text-field-leading-icon-color: var(--md-sys-color-primary);
+    --md-outlined-text-field-focus-leading-icon-color: var(
+      --md-sys-color-primary
+    );
+    font-family: var(--font-outfit);
+  }
+
+  .form-actions {
+    margin-top: 0.5rem;
+  }
+
+  #submit-button {
+    --md-filled-button-label-text-font: var(--font-outfit);
+    --md-filled-button-label-text-weight: 600;
+    --md-filled-button-container-height: 48px;
+    font-family: var(--font-outfit);
+    font-weight: 600;
+  }
+
+  /* Feedback Messages */
+  .feedback-msg {
+    display: none;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  .feedback-msg.show {
+    display: flex;
+  }
+
+  .success-msg {
+    background-color: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    color: #81c784;
+  }
+
+  .error-msg {
+    background-color: rgba(244, 67, 54, 0.1);
+    border: 1px solid rgba(244, 67, 54, 0.2);
+    color: #e57373;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Adaptación Responsiva */
+  @media (max-width: 900px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 3rem 2rem;
+    }
+
+    .contact-title {
+      font-size: 2rem;
+    }
+
+    .contact-desc {
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-section {
+      padding: 4rem 1rem;
+    }
+
+    .contact-container {
+      padding: 2rem 1.2rem;
+    }
+  }
+</style>

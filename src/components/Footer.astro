@@ -1,0 +1,185 @@
+---
+const currentYear = new Date().getFullYear();
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<footer>
+  <div class="footer-container">
+    <!-- Logotipo / Branding -->
+    <a href={`${baseUrl}#`} class="logo">
+      <span>&lt;</span>JVindas<span>/&gt;</span>
+    </a>
+
+    <!-- Enlaces Rápidos -->
+    <nav class="footer-links">
+      <a href={`${baseUrl}#`} class="footer-link">Inicio</a>
+      <a href={`${baseUrl}#servicios`} class="footer-link">Servicios</a>
+      <a href={`${baseUrl}#proyectos`} class="footer-link">Proyectos</a>
+      <a href={`${baseUrl}#habilidades`} class="footer-link">Habilidades</a>
+      <a href={`${baseUrl}#contacto`} class="footer-link">Contacto</a>
+    </nav>
+
+    <!-- Enlaces Sociales -->
+    <div class="social-links">
+      <a
+        href="https://github.com/ovindas/ovindas.github.io"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
+        <md-icon-button>
+          <md-icon>code</md-icon>
+        </md-icon-button>
+      </a>
+      <a
+        href="https://linkedin.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
+        <md-icon-button>
+          <md-icon>account_circle</md-icon>
+        </md-icon-button>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {currentYear} Juan Vindas. Todos los derechos reservados.</p>
+    <a href={`${baseUrl}#`} class="back-to-top" aria-label="Subir al inicio">
+      <md-icon>arrow_upward</md-icon>
+    </a>
+  </div>
+</footer>
+
+<script>
+  import "@material/web/iconbutton/icon-button.js";
+  import "@material/web/icon/icon.js";
+</script>
+
+<style>
+  footer {
+    background-color: #0b090e;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 4rem 2rem 2rem 2rem;
+    box-sizing: border-box;
+  }
+
+  .footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Logotipo */
+  .logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--md-sys-color-on-background);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .logo span {
+    color: var(--md-sys-color-primary);
+  }
+
+  /* Enlaces */
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-link {
+    font-family: var(--font-outfit);
+    font-size: 0.95rem;
+    color: var(--md-sys-color-on-background);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: var(--transition-swift);
+  }
+
+  .footer-link:hover {
+    opacity: 1;
+    color: var(--md-sys-color-primary);
+  }
+
+  /* Redes Sociales */
+  .social-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .social-links a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Parte Inferior */
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  /* Botón de subir */
+  .back-to-top {
+    background-color: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-swift);
+  }
+
+  .back-to-top:hover {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(208, 188, 255, 0.25);
+  }
+
+  .back-to-top md-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Adaptación Responsiva */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import Portfolio from "../components/Portfolio.astro";
+import Habilidades from "../components/Habilidades.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Juan Vindas | Ingeniero de Software"
+  description="Landing page premium de servicios de desarrollo de software, arquitectura cloud e integraciones de bots inteligentes de Juan Vindas."
+>
+  <!-- Header / Barra de Navegación -->
+  <Header />
+
+  <!-- Contenido Principal -->
+  <main>
+    <!-- Sección de Presentación / Hero -->
+    <Hero />
+
+    <!-- Sección de Servicios -->
+    <Services />
+
+    <!-- Galería de Portafolio / Proyectos -->
+    <Portfolio />
+
+    <!-- Galería de Habilidades -->
+    <Habilidades />
+
+    <!-- Formulario de Contacto -->
+    <Contact />
+  </main>
+
+  <!-- Footer / Pie de Página -->
+  <Footer />
+</Layout>
+
+<script>
+  // Registrar Intersection Observer para animaciones de entrada en Scroll
+  document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+      root: null, // viewport
+      rootMargin: "0px",
+      threshold: 0.12, // porcentaje del elemento visible para activar
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target); // Dejar de observar una vez animado
+        }
+      });
+    }, observerOptions);
+
+    // Seleccionar todas las secciones con clase .reveal
+    const elementsToReveal = document.querySelectorAll(".reveal");
+    elementsToReveal.forEach((el) => revealObserver.observe(el));
+  });
+</script>
+
+<style>
+  main {
+    position: relative;
+    z-index: 1;
+  }
+</style>
