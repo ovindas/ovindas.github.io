@@ -4,36 +4,39 @@ interface Props {
   description?: string;
 }
 
-const { 
-  title, 
-  description = "Software Engineer Portfolio - Premium services in software development, architecture, and cloud solutions." 
+const {
+  title,
+  description = "Software Engineer Portfolio - Premium services in software development, architecture, and cloud solutions.",
 } = Astro.props;
 
-// Obtener la base URL de Astro para resolver assets correctamente en GitHub Pages
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
-    
+
     <title>{title}</title>
     <meta name="description" content={description} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-    
-    <!-- Material Symbols Outlined -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
-    <style is:global>
-      /* Sistema de Colores Material 3 (M3) - Tema Oscuro Premium */
+    <!-- Material Symbols Outlined -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <style is:global is:inline>
       :root {
         --md-sys-color-primary: #d0bcff;
         --md-sys-color-on-primary: #381e72;
@@ -47,9 +50,11 @@ const baseUrl = import.meta.env.BASE_URL;
         --md-sys-color-on-tertiary: #492532;
         --md-sys-color-tertiary-container: #633b48;
         --md-sys-color-on-tertiary-container: #ffd8e3;
-        --md-sys-color-background: #0f0d13; /* Fondo ultra oscuro */
+        --md-sys-color-background: #0f0d13;
+        /* Fondo ultra oscuro */
         --md-sys-color-on-background: #e6e1e5;
-        --md-sys-color-surface: #18151f; /* Superficie elevada */
+        --md-sys-color-surface: #18151f;
+        /* Superficie elevada */
         --md-sys-color-on-surface: #e6e1e5;
         --md-sys-color-surface-variant: #49454f;
         --md-sys-color-on-surface-variant: #cac4d0;
@@ -63,9 +68,9 @@ const baseUrl = import.meta.env.BASE_URL;
         --md-sys-color-scrim: #000000;
 
         /* Fuentes */
-        --font-outfit: 'Outfit', sans-serif;
-        --font-roboto: 'Roboto', sans-serif;
-        --font-mono: 'Fira Code', monospace;
+        --font-outfit: "Outfit", sans-serif;
+        --font-roboto: "Roboto", sans-serif;
+        --font-mono: "Fira Code", monospace;
 
         /* Animaciones */
         --transition-swift: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -73,7 +78,9 @@ const baseUrl = import.meta.env.BASE_URL;
       }
 
       /* Reseteo y Estilos Globales */
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
@@ -82,7 +89,8 @@ const baseUrl = import.meta.env.BASE_URL;
       html {
         scroll-behavior: smooth;
         scrollbar-width: thin;
-        scrollbar-color: var(--md-sys-color-primary-container) var(--md-sys-color-background);
+        scrollbar-color: var(--md-sys-color-primary-container)
+          var(--md-sys-color-background);
       }
 
       body {
@@ -98,13 +106,16 @@ const baseUrl = import.meta.env.BASE_URL;
       ::-webkit-scrollbar {
         width: 8px;
       }
+
       ::-webkit-scrollbar-track {
         background: var(--md-sys-color-background);
       }
+
       ::-webkit-scrollbar-thumb {
         background: var(--md-sys-color-primary-container);
         border-radius: 4px;
       }
+
       ::-webkit-scrollbar-thumb:hover {
         background: var(--md-sys-color-primary);
       }
@@ -117,7 +128,7 @@ const baseUrl = import.meta.env.BASE_URL;
 
       /* Estilos para Material Symbols */
       .material-symbols-outlined {
-        font-family: 'Material Symbols Outlined';
+        font-family: "Material Symbols Outlined";
         font-weight: normal;
         font-style: normal;
         font-size: 24px;
@@ -132,15 +143,17 @@ const baseUrl = import.meta.env.BASE_URL;
       }
 
       md-icon {
-        --md-icon-font: 'Material Symbols Outlined';
-        font-family: 'Material Symbols Outlined';
+        --md-icon-font: "Material Symbols Outlined";
+        font-family: "Material Symbols Outlined";
       }
 
       /* Animaciones de Reveal en Scroll */
       .reveal {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .reveal.active {
