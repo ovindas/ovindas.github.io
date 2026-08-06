@@ -1,4 +1,4 @@
-name: CD Personal Page
+name: pages-build-deployment
 
 on:
   push:
