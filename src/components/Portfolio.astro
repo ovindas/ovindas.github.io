@@ -133,8 +133,8 @@ const projects = [
 
   /* Tarjeta de Proyecto */
   .project-card {
-    background: rgba(24, 21, 31, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--theme-card-bg);
+    border: 1px solid var(--theme-card-border);
     border-radius: 20px;
     overflow: hidden;
     display: flex;
@@ -146,7 +146,7 @@ const projects = [
 
   .project-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(208, 188, 255, 0.15);
+    border-color: var(--md-sys-color-primary-container);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
   }
 
@@ -156,8 +156,8 @@ const projects = [
     height: 180px;
     background: linear-gradient(
       135deg,
-      rgba(79, 55, 139, 0.3) 0%,
-      rgba(24, 21, 31, 0.8) 100%
+      var(--md-sys-color-primary-container) 0%,
+      var(--md-sys-color-surface) 100%
     );
     display: flex;
     align-items: center;
@@ -179,8 +179,8 @@ const projects = [
   }
 
   .project-art-icon {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--md-sys-color-surface-variant);
+    border: 1px solid var(--md-sys-color-outline-variant);
     border-radius: 50%;
     width: 72px;
     height: 72px;
@@ -195,8 +195,8 @@ const projects = [
   .project-card:hover .project-art-icon {
     transform: scale(1.1) rotate(5deg);
     color: var(--md-sys-color-tertiary);
-    border-color: rgba(239, 184, 200, 0.2);
-    box-shadow: 0 8px 32px rgba(208, 188, 255, 0.15);
+    border-color: var(--md-sys-color-tertiary-container);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   }
 
   .project-art-icon md-icon {
@@ -240,8 +240,8 @@ const projects = [
   .tech-tag {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    background: rgba(208, 188, 255, 0.05);
-    border: 1px solid rgba(208, 188, 255, 0.1);
+    background: var(--md-sys-color-surface-variant);
+    border: 1px solid var(--md-sys-color-outline-variant);
     border-radius: 6px;
     padding: 0.25rem 0.6rem;
     color: var(--md-sys-color-primary);
@@ -251,14 +251,25 @@ const projects = [
   .project-actions {
     display: flex;
     gap: 0.8rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--md-sys-color-outline-variant);
     padding-top: 1.2rem;
     margin-top: auto;
   }
 
   .action-link {
     text-decoration: none;
-    color: inherit;
+    color: var(--md-sys-color-on-surface-variant);
+    display: flex;
+  }
+
+  .action-link:hover {
+    color: var(--md-sys-color-primary);
+  }
+
+  md-icon-button {
+    --md-icon-button-icon-color: var(--md-sys-color-on-surface-variant);
+    --md-icon-button-hover-icon-color: var(--md-sys-color-primary);
+    --md-icon-button-hover-state-layer-color: var(--md-sys-color-primary);
   }
 
   /* Adaptación Móvil */

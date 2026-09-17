@@ -126,8 +126,8 @@ const services = [
     position: relative;
     overflow: hidden;
     /* Vital para que el ripple no se desborde */
-    background: rgba(24, 21, 31, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--theme-card-bg);
+    border: 1px solid var(--theme-card-border);
     border-radius: 16px;
     padding: 2.5rem 2rem;
     transition: var(--transition-swift);
@@ -147,7 +147,7 @@ const services = [
     height: 100%;
     background: linear-gradient(
       180deg,
-      rgba(208, 188, 255, 0.03) 0%,
+      rgba(var(--md-sys-color-primary), 0.03) 0%,
       transparent 100%
     );
     pointer-events: none;
@@ -155,7 +155,7 @@ const services = [
 
   .service-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(208, 188, 255, 0.15);
+    border-color: var(--md-sys-color-primary-container);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
   }
 
@@ -214,8 +214,8 @@ const services = [
   .mini-tag {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--md-sys-color-surface-variant);
+    border: 1px solid var(--md-sys-color-outline-variant);
     border-radius: 6px;
     padding: 0.2rem 0.5rem;
     color: var(--md-sys-color-secondary);

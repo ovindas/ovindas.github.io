@@ -59,8 +59,8 @@ const baseUrl = import.meta.env.BASE_URL;
 
 <style>
   footer {
-    background-color: #0b090e;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--md-sys-color-surface);
+    border-top: 1px solid var(--theme-card-border);
     padding: 4rem 2rem 2rem 2rem;
     box-sizing: border-box;
   }
@@ -74,7 +74,7 @@ const baseUrl = import.meta.env.BASE_URL;
     flex-wrap: wrap;
     gap: 2rem;
     padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--theme-card-border);
   }
 
   /* Logotipo */
@@ -148,7 +148,7 @@ const baseUrl = import.meta.env.BASE_URL;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--theme-card-border);
     transition: var(--transition-swift);
   }
 
@@ -156,7 +156,7 @@ const baseUrl = import.meta.env.BASE_URL;
     background-color: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
     transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(208, 188, 255, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .back-to-top md-icon {
