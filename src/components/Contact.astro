@@ -6,8 +6,20 @@
   <div class="contact-container">
     <div class="contact-info">
       <span class="section-tag">Contacto</span>
+      <h2 class="contact-title">Agenda tu diagnóstico gratuito</h2>
+      <p class="contact-desc">
+        Una llamada para entender tu negocio y ver cómo puedo ayudarte a
+        automatizar procesos o construir tu próximo producto digital.
+      </p>
 
-      <!-- Cal inline embed code begins -->
+      <div class="trust-badge">
+        <div class="trust-stars">⭐⭐⭐⭐⭐</div>
+        <div class="trust-text">
+          <strong>Diagnóstico 100% gratuito y sin compromisos</strong>
+          <span>Sin tarjeta de crédito · Respuesta en menos de 24h</span>
+        </div>
+      </div>
+
       <div
         style="width:100%;height:100%;min-height:650px;overflow:scroll"
         id="my-cal-inline-diagnostico"
@@ -61,7 +73,6 @@
           layout: "month_view",
         });
       </script>
-      <!-- Cal inline embed code ends -->
     </div>
   </div>
 
@@ -83,7 +94,6 @@
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
     }
 
-    /* Info Column */
     .contact-info {
       display: flex;
       flex-direction: column;
@@ -160,7 +170,6 @@
       color: var(--md-sys-color-primary);
     }
 
-    /* Form Column */
     .contact-form-wrapper {
       display: flex;
       flex-direction: column;
@@ -172,7 +181,6 @@
       flex-direction: column;
     }
 
-    /* Estilos específicos para Material Web Text Field */
     md-outlined-text-field {
       width: 100%;
       margin-bottom: 1.8rem;
@@ -206,7 +214,6 @@
       font-weight: 600;
     }
 
-    /* Feedback Messages */
     .feedback-msg {
       display: none;
       align-items: center;
@@ -246,7 +253,42 @@
       }
     }
 
-    /* Adaptación Responsiva */
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(var(--md-sys-color-primary-rgb, 103, 80, 164), 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .trust-stars {
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .trust-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .trust-text strong {
+      font-size: 0.95rem;
+      color: var(--md-sys-color-on-background);
+      font-weight: 600;
+    }
+
+    .trust-text span {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--md-sys-color-on-surface-variant);
+      opacity: 0.75;
+    }
+
     @media (max-width: 900px) {
       .contact-container {
         padding: 3rem 2rem;
