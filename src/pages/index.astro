@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Services from "../components/Services.astro";
 import Portfolio from "../components/Portfolio.astro";
-import Habilidades from "../components/Habilidades.astro";
+import HowItWorks from "../components/HowItWorks.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import StickyMobileCTA from "../components/StickyMobileCTA.astro";
@@ -12,14 +12,14 @@ import StickyMobileCTA from "../components/StickyMobileCTA.astro";
 
 <Layout
   title="Juan Vindas | Ingeniero de Software"
-  description="Landing page premium de servicios de desarrollo de software, arquitectura cloud e integraciones de bots inteligentes de Juan Vindas."
+  description="Desarrollo de software, arquitectura cloud e integraciones de bots inteligentes."
 >
   <Header />
   <main>
     <Hero />
     <Services />
     <Portfolio />
-    <Habilidades />
+    <HowItWorks />
     <Contact />
   </main>
   <StickyMobileCTA />
@@ -27,24 +27,21 @@ import StickyMobileCTA from "../components/StickyMobileCTA.astro";
 </Layout>
 
 <script>
-  // Registrar Intersection Observer para animaciones de entrada en Scroll
   document.addEventListener("DOMContentLoaded", () => {
     const observerOptions = {
-      root: null, // viewport
+      root: null,
       rootMargin: "0px",
-      threshold: 0.12, // porcentaje del elemento visible para activar
+      threshold: 0.12,
     };
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          observer.unobserve(entry.target); // Dejar de observar una vez animado
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
-
-    // Seleccionar todas las secciones con clase .reveal
     const elementsToReveal = document.querySelectorAll(".reveal");
     elementsToReveal.forEach((el) => revealObserver.observe(el));
   });

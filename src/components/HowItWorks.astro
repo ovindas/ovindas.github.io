@@ -1,0 +1,258 @@
+---
+const steps = [
+  {
+    number: "01",
+    icon: "search",
+    title: "Diagnóstico Gratuito",
+    description:
+      "Agendamos una llamada de 1 hora para entender tu negocio, identificar los cuellos de botella y definir qué solución tiene el mayor impacto en menos tiempo.",
+    highlight: "Sin costo · Sin compromisos",
+  },
+  {
+    number: "02",
+    icon: "engineering",
+    title: "Propuesta + Desarrollo Ágil",
+    description:
+      "Recibes una propuesta clara con precio fijo y alcance definido. Trabajo en ciclos de 1-2 semanas con entregas parciales para que siempre veas el avance real.",
+    highlight: "Precio fijo · Sin sorpresas",
+  },
+  {
+    number: "03",
+    icon: "rocket_launch",
+    title: "Entrega + Soporte",
+    description:
+      "Lanzamos tu solución con documentación incluida. Te acompaño en el post-lanzamiento para asegurar que todo funcione perfecto y el equipo sepa usarlo.",
+    highlight: "Documentado · Con soporte post-lanzamiento",
+  },
+];
+---
+
+<section id="proceso" class="how-section reveal">
+  <div class="section-header">
+    <span class="section-tag">El Proceso</span>
+    <h2 class="section-title">¿Cómo Trabajo?</h2>
+    <p class="section-subtitle">
+      Sin reuniones interminables ni sorpresas de último minuto. Un proceso
+      claro, transparente y orientado a resultados desde el día uno.
+    </p>
+  </div>
+
+  <div class="steps-container">
+    {
+      steps.map((step, index) => (
+        <div class="step-card">
+          <div class="step-number-col">
+            <div class="step-number">{step.number}</div>
+            {index < steps.length - 1 && <div class="step-connector" />}
+          </div>
+
+          <div class="step-body">
+            <div class="step-icon-wrap">
+              <md-icon class="step-icon">{step.icon}</md-icon>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-description">{step.description}</p>
+              <span class="step-highlight">{step.highlight}</span>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import "@material/web/icon/icon.js";
+</script>
+
+<style>
+  .how-section {
+    padding: 6rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    color: var(--md-sys-color-primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: var(--font-outfit);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--md-sys-color-on-background);
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .section-subtitle {
+    color: var(--md-sys-color-on-background);
+    opacity: 0.7;
+    max-width: 580px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step-card {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 2rem;
+    align-items: start;
+  }
+
+  .step-number-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.25rem;
+  }
+
+  .step-number {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+    background: var(--md-sys-color-primary-container);
+    border: 1px solid var(--md-sys-color-primary-container);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+
+  .step-connector {
+    width: 2px;
+    flex-grow: 1;
+    min-height: 3rem;
+    background: linear-gradient(
+      to bottom,
+      var(--md-sys-color-primary-container),
+      transparent
+    );
+    margin: 0.5rem 0;
+  }
+
+  .step-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding-bottom: 3rem;
+    background: var(--theme-card-bg);
+    border: 1px solid var(--theme-card-border);
+    border-radius: 16px;
+    padding: 1.8rem 2rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition-swift);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .step-body:hover {
+    border-color: var(--md-sys-color-primary-container);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    transform: translateX(4px);
+  }
+
+  .step-icon-wrap {
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition-swift);
+  }
+
+  .step-body:hover .step-icon-wrap {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+  }
+
+  .step-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .step-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .step-title {
+    font-family: var(--font-outfit);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--md-sys-color-on-surface);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-description {
+    font-size: 0.95rem;
+    color: var(--md-sys-color-on-surface-variant);
+    line-height: 1.65;
+    margin-bottom: 0.8rem;
+  }
+
+  .step-highlight {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--md-sys-color-primary);
+    background: rgba(var(--md-sys-color-primary-rgb, 103, 80, 164), 0.08);
+    border: 1px solid var(--md-sys-color-primary-container);
+    border-radius: 100px;
+    padding: 0.2rem 0.7rem;
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    .how-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .step-card {
+      grid-template-columns: 44px 1fr;
+      gap: 0 1rem;
+    }
+
+    .step-body {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.4rem;
+    }
+
+    .step-body:hover {
+      transform: none;
+    }
+  }
+</style>

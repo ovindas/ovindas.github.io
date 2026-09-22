@@ -1,38 +1,32 @@
 ---
 const services = [
   {
-    icon: "layers",
-    title: "Desarrollo Full-Stack",
+    icon: "web",
+    title: "Tu Web, Tu Mejor Vendedor",
     description:
-      "Creación de aplicaciones web completas utilizando las tecnologías más eficientes del mercado. Enfoque en rendimiento, accesibilidad y código limpio.",
+      "Construyo aplicaciones web rápidas y atractivas que convierten visitantes en clientes. Deja de perder oportunidades con una plataforma lenta o que no genera confianza.",
     tech: ["Astro", "React", "TypeScript", "Python"],
   },
   {
-    icon: "api",
-    title: "APIs e Integraciones",
+    icon: "hub",
+    title: "Conecta Todo tu Stack",
     description:
-      "Diseño y desarrollo de APIs REST. Integración con servicios externos como WhatsApp Business API y CRM.",
-    tech: ["REST/XML", "FastAPI", "Integraciones"],
+      "Integro tus herramientas de negocio entre sí: CRM, WhatsApp Business, plataformas de pago y cualquier sistema externo. Que los datos fluyan solos, sin trabajo manual.",
+    tech: ["WhatsApp Business API", "CRM", "FastAPI", "REST"],
   },
   {
-    icon: "account_tree",
-    title: "N8N",
-    description: "Diseño y automatización de flujos de trabajo.",
-    tech: ["N8N", "Docker", "GitHub"],
+    icon: "smart_toy",
+    title: "Automatiza tu Operación",
+    description:
+      "Convierto procesos manuales en flujos automáticos. Notificaciones, reportes, seguimiento de clientes y tareas repetitivas que se ejecutan solas mientras tú te enfocas en crecer.",
+    tech: ["N8N", "Docker", "Webhooks", "GitHub"],
   },
   {
     icon: "speed",
-    title: "Optimización y Rendimiento",
+    title: "Web que Retiene Clientes",
     description:
-      "Auditoría técnica de plataformas web existentes para acelerar los tiempos de carga, mejorar la experiencia de usuario y optimizar la puntuación SEO.",
-    tech: ["Performance Audit", "Web Vitals", "SEO", "Accessibilidad"],
-  },
-  {
-    icon: "settings_suggest",
-    title: "Automatización de Procesos",
-    description:
-      "Automatización de procesos repetitivos y tediosos para ahorrar tiempo y esfuerzo en tareas manuales y repetitivas. ",
-    tech: ["Performance Audit", "Web Vitals", "SEO", "Accessibilidad"],
+      "El 53% de los usuarios abandona si tu web tarda más de 3 segundos. Audito tu plataforma y la optimizo para que cargue en menos de 1 segundo y aparezca primero en Google.",
+    tech: ["Web Vitals", "SEO", "Performance Audit", "Accesibilidad"],
   },
 ];
 ---
@@ -40,9 +34,14 @@ const services = [
 <section id="servicios" class="services-section reveal">
   <div class="section-header">
     <span class="section-tag">El Problema</span>
-    <h2 class="section-title">¿Pierdes horas en tareas manuales y repetitivas?</h2>
+    <h2 class="section-title">
+      ¿Pierdes horas en tareas manuales y repetitivas?
+    </h2>
     <p class="section-subtitle">
-      Cada hora gastada en hojas de cálculo y procesos ineficientes es tiempo que no estás invirtiendo en crecer. Yo me encargo de automatizar tus operaciones y desarrollar el software que necesitas para que tu negocio funcione en piloto automático.
+      Cada hora gastada en hojas de cálculo y procesos ineficientes es tiempo
+      que no estás invirtiendo en crecer. Yo me encargo de automatizar tus
+      operaciones y desarrollar el software que necesitas para que tu negocio
+      funcione en piloto automático.
     </p>
   </div>
 
@@ -80,7 +79,6 @@ const services = [
     box-sizing: border-box;
   }
 
-  /* Cabecera de Sección */
   .section-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -113,18 +111,15 @@ const services = [
     font-size: 1.1rem;
   }
 
-  /* Grid de Servicios */
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
   }
 
-  /* Tarjeta de Servicio con Glassmorphism */
   .service-card {
     position: relative;
     overflow: hidden;
-    /* Vital para que el ripple no se desborde */
     background: var(--theme-card-bg);
     border: 1px solid var(--theme-card-border);
     border-radius: 16px;
@@ -158,7 +153,6 @@ const services = [
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
   }
 
-  /* Icono */
   .service-icon-container {
     background-color: var(--md-sys-color-primary-container);
     color: var(--md-sys-color-on-primary-container);
@@ -185,7 +179,6 @@ const services = [
     height: 28px;
   }
 
-  /* Contenido */
   .service-title {
     font-family: var(--font-outfit);
     font-size: 1.35rem;
@@ -200,10 +193,8 @@ const services = [
     line-height: 1.6;
     margin-bottom: 1.8rem;
     flex-grow: 1;
-    /* Empuja los tags al final */
   }
 
-  /* Tags de tecnologías */
   .service-tech-list {
     display: flex;
     flex-wrap: wrap;
@@ -220,7 +211,6 @@ const services = [
     color: var(--md-sys-color-secondary);
   }
 
-  /* Adaptación Móvil */
   @media (max-width: 768px) {
     .services-section {
       padding: 4rem 1.5rem;
